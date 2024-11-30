@@ -10,16 +10,16 @@ class MultiVariateAnalysisTemplate(ABC):
         self.generate_pairplot(df)
     
     @abstractmethod
-    def generate_correlation_heatmap(self, df: pd.DataFrame):
+    def generate_correlation_matrix(self, df: pd.DataFrame):
         pass
 
     @abstractmethod
     def generate_pairplot(self, df: pd.DataFrame):
         pass
 
-#multivariate analysis strategy with correlation matrix and pairplot
+#multivariate analysis strategy with correlation heatmap and pairplot
 class SimpleMultiVariateAnalysis(MultiVariateAnalysisTemplate):
-    def generate_correlation_heatmap(self, df: pd.DataFrame):
+    def generate_correlation_matrix(self, df: pd.DataFrame):
         plt.figure(figsize=(12, 10))
         sns.heatmap(df.corr(), annot=True, fmt=".2f", cmap="coolwarm", linewidths=0.5)
         plt.title("Correlation Heatmap")
